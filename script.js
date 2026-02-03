@@ -31,7 +31,8 @@ function logoutAdmin() {
 
 function submitTeacherForm() {
     // میں نے یہاں بھی اصل لنک لگا دیا ہے تاکہ فارم کام کرے
-    var API_URL = "https://script.google.com/macros/s/AKfycbwg2XEXGy3gKzK2YuCDVsHM48-8Zg5hEMIaWOdlJeqIr2q6E__fnb1TmPW86JDE5eCO/exec"; 
+    var API_URL = "https://script.google.com/macros/s/AKfycbzVuIQXEzlILy1deIK2VOboctU3dsELgIPa5J9cHq_H2nnL2cA_5HjugGNSaHMhK2SR3Q/exec"; 
+    
     var mosque = document.getElementById('mosqueSelect').value;
     var student = document.querySelector('input[placeholder="أدخل اسم الطالب هنا..."]').value;
     var statusInput = document.querySelector('input[name="status"]:checked');
@@ -60,7 +61,7 @@ function submitTeacherForm() {
 
 // صرف یہ ایک loadReports فنکشن رہے گا (دوسرا کوڈ حذف کر دیا گیا ہے)
 function loadReports() {
-    var API_URL = "https://script.google.com/macros/s/AKfycbwg2XEXGy3gKzK2YuCDVsHM48-8Zg5hEMIaWOdlJeqIr2q6E__fnb1TmPW86JDE5eCO/exec"; 
+    var API_URL = "https://script.google.com/macros/s/AKfycbzVuIQXEzlILy1deIK2VOboctU3dsELgIPa5J9cHq_H2nnL2cA_5HjugGNSaHMhK2SR3Q/exec"; 
 
     fetch(API_URL)
     .then(function(response) { return response.json(); })
