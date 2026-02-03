@@ -29,7 +29,51 @@ function checkAdmin() {
         document.getElementById('loginError').style.display = 'block';
     }
 }
+// === نئا فنکشن: شیخ کے لیے رپورٹس لوڈ کرنا ===
+function loadReports() {
+  // وہی API لنک جسے ہم سے پہلے سے استعمال کر رہے ہیں
+  var API_URL = "https://script.google.com/macros/s/AKfycbwg2XEXGy3gKzK2YuCDVsHM48-8Zg5hEMIaWOdlJeqIr2q6E__fnb1TmPW86JDE5eCO/exec"; 
 
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+      var listContainer = document.getElementById('reportList');
+      listContainer.innerHTML = ""; // پرانا ڈیٹا صاف کر دیں
+
+      // اگر کوئی ڈیٹا نہ ہو
+      if(data.length === 0) {
+        listContainer.innerHTML = "<p>لا توجد تقارير بعد.</p>";
+        return;
+      }
+
+      // ڈیٹا کو دکھانا (آخری 5 رپورٹس، سب سے نیا اوپر)
+      var recentReports = data.slice().reverse().slice(0, 5);
+
+      recentReports.forEach(report => {
+        // رنگوں کو منتخب کرنا
+        var colorClass = "";
+        if(report.status === 'حاضر') colorClass = "status-present";
+        else if(report.status === 'غائب') colorClass = "status-absent";
+        else colorClass = "status-late";
+
+        var html = `
+          <div style="border-bottom:1px solid #eee; padding:10px 0; display:flex; justify-content:space-between;">
+             <div>
+                <strong>${report.student}</strong> <br>
+                <small style="color:#666;">${report.mosque} - ${report.notes}</small>
+             </div>
+             <span style="font-size:0.8rem; padding:2px 8px; border-radius:4px;" class="${colorClass}">
+               ${report.status}
+             </span>
+          </div>
+        `;
+        listContainer.innerHTML += html;
+      });
+    })
+    .catch(error => {
+      console.error('Error loading reports:', error);
+    });
+}
 // لاگ آؤٹ فنکشن
 function logoutAdmin() {
     document.getElementById('adminPassword').value = '';
