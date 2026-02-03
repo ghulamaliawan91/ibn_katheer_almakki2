@@ -1,0 +1,190 @@
+/* --- اسٹائل شیت (CSS) --- */
+
+:root {
+    --primary: #1e3a8a; /* گہرا نیلا */
+    --secondary: #d97706; /* سنہرا */
+    --accent: #6366f1;
+    --success: #10b981;
+    --danger: #ef4444;
+    --bg-color: #f0f4f8;
+    --text-color: #1f2937;
+    --white: #ffffff;
+    --shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --radius-xl: 20px;
+    --radius-md: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    padding-bottom: 85px;
+}
+
+h1, h2, h3, .logo { font-family: 'Amiri', serif; }
+
+/* === نیویگیشن (نیچے والا مینو) === */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 20px 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+    z-index: 1000;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-item {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.nav-item.active {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.nav-item.active i {
+    transform: scale(1.2);
+}
+
+/* === سیکشنز (پیجز) === */
+.page-section {
+    display: none;
+    padding: 0 20px 80px 20px;
+    animation: slideUp 0.4s ease-out;
+}
+
+.page-section.active { display: block; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === ہیڈر === */
+.main-header {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-soft);
+    border-bottom-left-radius: var(--radius-xl);
+    border-bottom-right-radius: var(--radius-xl);
+}
+
+.logo { font-size: 1.3rem; display: flex; align-items: center; gap: 10px; font-weight: bold; }
+.bahrain-flag { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); }
+
+/* === کارڈز === */
+.card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* === لنک بٹنز === */
+.contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    transition: 0.3s;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+.contact-link:active { transform: scale(0.98); background-color: #f9fafb; }
+.contact-icon { width: 45px; height: 45px; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+
+/* === عمومی بٹنز === */
+.btn {
+    display: block;
+    background: var(--primary);
+    color: white;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2);
+    transition: transform 0.2s;
+}
+.btn:active { transform: translateY(2px); box-shadow: none; }
+.btn-success { background: var(--success); }
+.btn-success:active { background: #059669; }
+.btn-danger { background: var(--danger); }
+.btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); box-shadow: none; }
+.btn-whatsapp { background: #25D366; }
+
+/* === انپٹ فیلڈز (موبائل کے لیے بڑے) === */
+input, select, textarea {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: #fafafa;
+    transition: border-color 0.3s;
+    font-family: 'Tajawal', sans-serif;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+}
+
+/* === تصاویر === */
+.profile-img {
+    width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+    border: 3px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 15px;
+}
+.teacher-card { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #e5e7eb; }
+
+/* === ہیرو سیکشن === */
+.hero-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    border-radius: 0 0 30px 30px;
+    margin: -20px -20px 20px -20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.welcome-text { font-size: 0.95rem; opacity: 0.9; margin-top: 10px; }
+
+/* === پاس ورڈ سیکشن === */
+.login-box { text-align: center; padding: 40px 20px; }
