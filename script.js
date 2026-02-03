@@ -86,7 +86,7 @@ function loadReports() {
     });
 }
 function loadReports() {
-    var API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE"; 
+    var API_URL = "https://script.google.com/macros/s/AKfycbwg2XEXGy3gKzK2YuCDVsHM48-8Zg5hEMIaWOdlJeqIr2q6E__fnb1TmPW86JDE5eCO/exec"; 
 
     fetch(API_URL)
     .then(function(response) { return response.json(); })
@@ -118,4 +118,3 @@ function loadReports() {
       listContainer.innerHTML = "<p>فشل في تحميل البيانات.</p>";
     });
 }
-
