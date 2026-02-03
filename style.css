@@ -188,3 +188,7 @@ input:focus, select:focus, textarea:focus {
 
 /* === پاس ورڈ سیکشن === */
 .login-box { text-align: center; padding: 40px 20px; }
+/* رپورٹ کے رنگ */
+.status-present { background-color: #d1fae5; color: #065f46; }
+.status-absent { background-color: #fee2e2; color: #991b1b; }
+.status-late { background-color: #fef3c7; color: #92400e; }
