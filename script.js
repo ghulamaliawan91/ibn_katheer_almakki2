@@ -10,7 +10,8 @@ function showPage(pageId) {
     window.scrollTo(0,0);
 }
 
-function checkAdmin() {
+function checkAdmin()document.getElementById('adminDashboard').style.display = 'block';        
+        loadReports();  {
     const pass = document.getElementById('adminPassword').value;
     if(pass === 'admin123') {
         document.getElementById('adminLogin').style.display = 'none';
@@ -84,3 +85,37 @@ function loadReports() {
       listContainer.innerHTML = "<p>فشل في تحميل البيانات.</p>";
     });
 }
+function loadReports() {
+    var API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE"; 
+
+    fetch(API_URL)
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      var listContainer = document.getElementById('reportList');
+      listContainer.innerHTML = ""; 
+
+      if(data.length === 0) {
+        listContainer.innerHTML = "<p>لا توجد تقارير بعد.</p>";
+        return;
+      }
+
+      var recentReports = data.slice().reverse().slice(0,5);
+
+      recentReports.forEach(function(report) {
+        var colorClass = "";
+        if(report.status === 'حاضر') colorClass = "status-present";
+        else if(report.status === 'غائب') colorClass = "status-absent";
+        else colorClass = "status-late";
+
+        var html = "<div style='border-bottom:1px solid #eee; padding:10px 0; display:flex; justify-content:space-between;'><div><strong>" + report.student + "</strong><br><small style='color:#666;'>" + report.mosque + " - " + report.notes + "</small></div><span style='font-size:0.8rem; padding:2px 8px; border-radius:4px;' class='" + colorClass + "'>" + report.status + "</span></div>";
+        
+        listContainer.innerHTML += html;
+      });
+    })
+    .catch(function(error) {
+      console.error('Error loading reports:', error);
+      var listContainer = document.getElementById('reportList');
+      listContainer.innerHTML = "<p>فشل في تحميل البيانات.</p>";
+    });
+}
+
