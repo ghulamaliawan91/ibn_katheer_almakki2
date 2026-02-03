@@ -18,17 +18,19 @@ function showPage(pageId) {
     // اوپر اسکرول کرو
     window.scrollTo(0, 0);
 }
-
-// شیخ کا پاس ورڈ چیک کرنے کا فنکشن
+// شیخ کا پاس ورڈ چیک کرنے کا فنکشن (اپ ڈیٹ شدہ)
 function checkAdmin() {
     const pass = document.getElementById('adminPassword').value;
     if(pass === 'admin123') {
         document.getElementById('adminLogin').style.display = 'none';
         document.getElementById('adminDashboard').style.display = 'block';
+        
+        // === ضروری: لاگ ان ہوتے ہی رپورٹ لوڈ کر دیں ===
+        loadReports(); 
     } else {
         document.getElementById('loginError').style.display = 'block';
     }
-}
+    
 // === نئا فنکشن: شیخ کے لیے رپورٹس لوڈ کرنا ===
 function loadReports() {
   // وہی API لنک جسے ہم سے پہلے سے استعمال کر رہے ہیں
