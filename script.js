@@ -30,7 +30,7 @@ function logoutAdmin() {
 }
 
 function submitTeacherForm() {
-    var API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE"; 
+    var API_URL = "https://script.google.com/macros/s/AKfycbwg2XEXGy3gKzK2YuCDVsHM48-8Zg5hEMIaWOdlJeqIr2q6E__fnb1TmPW86JDE5eCO/exec"; 
     var mosque = document.getElementById('mosqueSelect').value;
     var student = document.querySelector('input[placeholder="أدخل اسم الطالب هنا..."]').value;
     var statusInput = document.querySelector('input[name="status"]:checked');
